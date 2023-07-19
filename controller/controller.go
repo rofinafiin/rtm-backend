@@ -2,7 +2,6 @@ package controller
 
 import (
 	"fmt"
-	"github.com/aiteung/musik"
 	"github.com/gofiber/fiber/v2"
 	rtpkg "github.com/rofinafiin/rtm-package"
 	"net/http"
@@ -33,7 +32,8 @@ var usercol = "data_user"
 //}
 
 func GetHome(c *fiber.Ctx) error {
-	getip := musik.GetIPaddress()
+	//getip := musik.GetIPaddress()
+	getip := "Hello guys"
 	return c.JSON(getip)
 }
 
