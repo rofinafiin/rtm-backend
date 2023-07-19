@@ -1,6 +1,7 @@
 package controller
 
 import (
+	"fmt"
 	"github.com/aiteung/musik"
 	"github.com/gofiber/fiber/v2"
 	rtpkg "github.com/rofinafiin/rtm-package"
@@ -39,6 +40,7 @@ func GetHome(c *fiber.Ctx) error {
 func Getdatauser(c *fiber.Ctx) error {
 	id := "cc2"
 	getstats := rtpkg.GetDatauser(id, config.MongoConn, usercol)
+	fmt.Println(getstats)
 	return c.JSON(getstats)
 }
 
@@ -54,6 +56,7 @@ func InsertData(c *fiber.Ctx) error {
 		jumlah.Email,
 		jumlah.Handphone,
 	)
+	fmt.Println(Inserted)
 	return c.JSON(map[string]interface{}{
 		"status":      http.StatusOK,
 		"message":     "Data berhasil disimpan.",
@@ -64,6 +67,7 @@ func InsertData(c *fiber.Ctx) error {
 func GetDataUserbyPhone(c *fiber.Ctx) error {
 	hp := c.Params("handphone")
 	data := rtpkg.GetDataUserFromPhone(hp, config.MongoConn, "data_user")
+	fmt.Println(data)
 	return c.JSON(data)
 }
 
