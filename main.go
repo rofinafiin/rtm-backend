@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/joho/godotenv"
 	"log"
 
 	"rtm/config"
@@ -16,7 +17,7 @@ import (
 )
 
 func main() {
-	//_ = godotenv.Load(".env")
+	_ = godotenv.Load(".env")
 	go whatsauth.RunHub()
 	site := fiber.New(config.Iteung)
 	site.Use(cors.New(config.Cors))
